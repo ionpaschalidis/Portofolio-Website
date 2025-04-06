@@ -63,20 +63,25 @@ table {
     padding: 0;
     margin: 0;
     box-sizing: inherit;
-}
+}   
 html {
     font-size: 62.5%; /* 10px of 16px */
     box-sizing: border-box;
     height: 100%;
 }
 
+:root{
+    --background-color: #000000;
+    --text-color: #ffffff;
+}
+
 body {
-    color: white;
-    background-color: #111111;
+    color: var(--text-color);
+    background-color: var(--background-color);
     position: relative;
     height: 100%;
     line-height: 1.5;
-    font-size: 1.6rem; /* 16px */
+    font-size: 1.5rem;
     font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -108,6 +113,44 @@ body {
     width: 125%;
     transform: translateX(-50%);
     border-bottom: 3px dashed #015f07;
+}
+
+/*
+ * ==================
+ * Dark/Light Mode
+ * ==================
+ */
+
+ .lightmode {
+    --background-color: #ffffff;    
+    --text-color: #000000;
+}
+
+ #theme-switch{
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: #000000;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+#theme-switch svg:last-child{
+    display: none;
+}
+
+.lightmode #theme-switch svg:first-child{
+    display: none;
+}
+
+.lightmode #theme-switch svg:last-child{
+    display: block;
 }
 
 /*
@@ -339,7 +382,7 @@ body {
     left: 0;
     width: 100%;
     height: 350px;
-    background: linear-gradient(to top, #111, #1110);
+    background: var(--background-color);
     z-index: -1;
 }
 .header__left{
