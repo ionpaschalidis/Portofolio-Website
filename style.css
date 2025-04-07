@@ -237,7 +237,7 @@ body {
     width: 95%;
     height: 3px;
     border-radius: 99rem;
-    background-color: white;
+    background-color: var(--text-color);
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -262,7 +262,7 @@ body {
     overflow: hidden;
 }
 .header__container{
-    height: 100vh;
+    height: 80vh;
     display: flex;
     align-items: center;
     position: relative;
@@ -280,17 +280,6 @@ body {
     width: 100%;
     max-width: 900px;
 }
-.header__right{
-    position: absolute;
-    right: 0;
-    z-index: -1;
-    display: none;
-}
-.header__right img{
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-}
 .header__sup-text{
     display: inline-flex;
     font-weight: 500;
@@ -304,7 +293,6 @@ body {
     display: flex;
     flex-direction: column;
 }
-
 .header__msg{
     font-weight: 300;
     font-size: 1.5rem;
