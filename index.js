@@ -59,7 +59,7 @@ addPaddingToHeroHeaderFn();
 window.addEventListener('resize', ()=>{
   addPaddingToHeroHeaderFn();
 
-// When the navbar is active and the window is being resized, remove the active state once the breakpoint is reached
+  // When the navbar is active and the window is being resized, remove the active state once the breakpoint is reached
   if(window.innerWidth >= BREAKPOINT){
     addPaddingToHeroHeaderFn();
     resetActiveState();
@@ -67,43 +67,36 @@ window.addEventListener('resize', ()=>{
 });
 
 // As the user scrolls, the active link should change based on the section currently displayed on the screen.
-/* LOOKING FOR ERROR */
-function updateActiveLinkOnScroll() {
-    const sections = document.querySelectorAll('#home, #aboutMe, #education, #projects, #contact');
-    const NAV_BAR_HEIGHT = NAV_BAR.getBoundingClientRect().height;
-    let found = false;
-  
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      const sectionID = section.getAttribute('id');
-  
-      const isInView = window.scrollY >= sectionTop - NAV_BAR_HEIGHT &&
-                       window.scrollY < sectionTop + sectionHeight - NAV_BAR_HEIGHT;
-  
-      if (isInView) {
-        console.log(`🟢 In view: ${sectionID}`);
-        const LINK = NAV_LINKS.find(link => link.href.includes(`#${sectionID}`));
-        if (!LINK) {
-          console.warn(`⚠️ No nav link found for ${sectionID}`);
-          return;}
-  
-        if (currentActiveLink !== LINK) {
-          if (currentActiveLink) {
-            currentActiveLink.classList.remove(ACTIVE_LINK_CLASS);
-            console.log(`🔴 Removed active from: ${currentActiveLink.textContent}`);
-          }
-          LINK.classList.add(ACTIVE_LINK_CLASS);
-          currentActiveLink = LINK;
-          console.log(`🟢 Added active to: ${LINK.textContent}`);
-        }
-        found = true;
-      }});
-  
-    if (!found) {console.log('🔘 No section in view');}}
-  
-  window.addEventListener('scroll', updateActiveLinkOnScroll);
-  window.addEventListener('load', updateActiveLinkOnScroll);
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('#home, #aboutMe, #education, #projects, #contact');
+  const NAV_BAR_HEIGHT = NAV_BAR.getBoundingClientRect().height;
+  let closestSection = null;
+  let minDistance = Number.POSITIVE_INFINITY;
+
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    const distance = Math.abs(rect.top - NAV_BAR_HEIGHT);
+
+    if (distance < minDistance) {
+      minDistance = distance;
+      closestSection = section;
+    }
+  });
+
+  if (closestSection) {
+    const ID = closestSection.getAttribute('id');
+    const LINK = NAV_LINKS.find(link => link.getAttribute('href') === `#${ID}`);
+
+    if (LINK && LINK !== currentActiveLink) {
+      if (currentActiveLink) {
+        currentActiveLink.classList.remove(ACTIVE_LINK_CLASS);
+      }
+      LINK.classList.add(ACTIVE_LINK_CLASS);
+      currentActiveLink = LINK;
+    }
+  }
+});
+
 
 // Shows & hide navbar on smaller screen
 HAMBURGER_BTN.addEventListener('click', ()=>{
