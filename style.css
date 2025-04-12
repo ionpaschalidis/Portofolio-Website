@@ -2,7 +2,6 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -29,25 +28,20 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
-
 body {
     line-height: 1;
 }
-
 ol, ul {
     list-style: none;
 }
-
 blockquote, q {
     quotes: none;
 }
-
 blockquote:before, blockquote:after,
 q:before, q:after {
     content: '';
     content: none;
 }
-
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -58,24 +52,21 @@ table {
  * Start Here
  * ==================
  */
- 
  *,*::before,*::after{
     padding: 0;
     margin: 0;
     box-sizing: inherit;
-}   
+}
 html {
     font-size: 62.5%; /* 10px of 16px */
     box-sizing: border-box;
     height: 100%;
     scroll-behavior: smooth;
 }
-
 :root{
     --background-color: #000000;
     --text-color: #ffffff;
 }
-
 body {
     color: var(--text-color);
     background-color: var(--background-color);
@@ -85,7 +76,6 @@ body {
     font-size: 1.5rem;
     font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
-
 .container {
     display: block;
     margin-left: auto;
@@ -96,14 +86,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 7rem;
+    padding-bottom: 10rem;
 }
 .section:last-of-type{
     margin-bottom: 0;
 }
 .section__title{
-    font-weight: 800;
-    font-size: 5rem;
+    font-weight: 600;
+    font-size: 4rem;
     position: relative;
 }
 .section__title::before{
@@ -121,12 +111,10 @@ body {
  * Dark/Light Mode
  * ==================
  */
-
 .lightmode {
     --background-color: #ffffff;    
     --text-color: #000000;
 }
-
  #theme-switch{
     height: 50px;
     width: 50px;
@@ -141,15 +129,12 @@ body {
     left: 20px;
     z-index: 1000;
 }
-
 #theme-switch svg:last-child{
     display: none;
 }
-
 .lightmode #theme-switch svg:first-child{
     display: none;
 }
-
 .lightmode #theme-switch svg:last-child{
     display: block;
 }
@@ -169,7 +154,7 @@ body {
     z-index: 999;
     backdrop-filter: blur(25px);
 }
-.nav__list{
+.nav__list {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -262,7 +247,7 @@ body {
     overflow: hidden;
 }
 .header__container{
-    height: 80vh;
+    height: 100dvh;
     display: flex;
     align-items: center;
     position: relative;
@@ -288,7 +273,7 @@ body {
 .header__title{
     text-transform: uppercase;
     font-weight: 800;
-    font-size: 5rem;
+    font-size: clamp(3rem, 6vw, 6rem);
     line-height: 1;
     display: flex;
     flex-direction: column;
@@ -311,6 +296,87 @@ body {
     position: relative;
 }
 
+/*
+ * ==================
+ * Services
+ * ==================
+ */
+ .service-cards{
+    display: flex;
+    flex-direction: column;
+    margin-top: 6rem;
+}
+.service-card__box{
+    margin-bottom: 10rem;
+    border: 2px solid #015f07;
+    padding: 3rem;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+.service-card__title{
+    font-weight: 800;
+    font-size: 2rem;
+    color: #015f07;
+    margin-top: 2rem;
+}
+.service-card__msg{
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.6;
+}
+
+/*
+ * ==================
+ * Works
+ * ==================
+ */
+.works{
+    margin-top: 10rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+.work{
+    width: 100%;
+    padding: 2%;
+}
+.work__box{
+    border-radius: 7px;
+    padding: 1.5rem;
+    background-color: #000000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.work__img-box{
+    width: 100%;
+    display: flex;
+    border-radius: 7px;
+    overflow: hidden;
+}
+.work__img-box img{
+    width: 100%;
+}
+.work__title{
+    margin-top: 1rem;
+    font-weight: 700;
+}
+
+/*
+ * ==================
+ * Footer
+ * ==================
+ */
+.footer{
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 700;
+    backdrop-filter: blur(75px);
+    text-align: center;
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+}
+.footer__link{
+    color: #015f07;
+}
 /*Subtle hero animation*/
 @keyframes fadeInUp {
     0% {
@@ -350,7 +416,7 @@ body {
 
     /* Navbar */
     .nav__list{
-        height: unset;
+        height: 0;
         flex-direction: row;
         justify-content: flex-end;
         overflow-y: unset;
@@ -382,7 +448,6 @@ body {
  * ========================
  * Medium Screen -- 768px
  * ========================
- 
 @media only screen and (min-width: 48em) {
     .container {
         max-width: 760px;
@@ -403,7 +468,6 @@ body {
         height: 150px;
     }
 }
-
 */
 
 /*
@@ -474,7 +538,6 @@ body {
         max-width: 1320px;
     }
 }
-
 /* Responsive Design for smaller screens (phones) */
 @media (max-width: 768px) {
     .skills__grid {
