@@ -125,3 +125,28 @@ NAV_LINKS.forEach(link => {
     link.blur();
   })
 })
+
+// Multiple pictures per project
+document.querySelectorAll('.carousel').forEach(carousel => {
+  const images = Array.from(carousel.querySelectorAll('.carousel__image'));
+  const prevBtn = carousel.querySelector('.carousel__btn.prev');
+  const nextBtn = carousel.querySelector('.carousel__btn.next');
+  let currentIndex = 0;
+
+  const updateCarousel = (index) => {
+    images.forEach((img, i) => {
+      img.classList.toggle('active', i === index);
+    });
+    currentIndex = index;
+  };
+
+  nextBtn?.addEventListener('click', () => {
+    const nextIndex = (currentIndex + 1) % images.length;
+    updateCarousel(nextIndex);
+  });
+
+  prevBtn?.addEventListener('click', () => {
+    const prevIndex = (currentIndex - 1 + images.length) % images.length;
+    updateCarousel(prevIndex);
+  });
+});

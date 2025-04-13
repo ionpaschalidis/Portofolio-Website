@@ -128,6 +128,7 @@ body {
     top: 20px;
     left: 20px;
     z-index: 1000;
+    cursor: pointer;
 }
 #theme-switch svg:last-child{
     display: none;
@@ -328,70 +329,111 @@ body {
 
 /*
  * ==================
- * Works
+ * Projects
  * ==================
  */
-.works{
-    margin-top: 10rem;
-    display: flex;
-    flex-wrap: wrap;
-}
-.work{
+ /*--Single picture--*/
+ .projects__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Always 3 columns */
+    gap: 2rem;
+    max-width: 1080px;       
+    margin: 4rem auto 0;    /* Top margin + horizontal centering */
     width: 100%;
-    padding: 2%;
-}
-.work__box{
-    border-radius: 7px;
-    padding: 1.5rem;
-    background-color: #000000;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.work__img-box{
+  }
+  .project__item {
+    position: relative;
     width: 100%;
-    display: flex;
-    border-radius: 7px;
+    aspect-ratio: 1 / 1; /* ensures a square box */
     overflow: hidden;
-}
-.work__img-box img{
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .project__item img {
     width: 100%;
-}
-.work__title{
-    margin-top: 1rem;
-    font-weight: 700;
-}
-
-/*
- * ==================
- * Footer
- * ==================
- */
-.footer{
-    font-size: 1.4rem;
-    color: white;
-    font-weight: 700;
-    backdrop-filter: blur(75px);
+    height: 100%;
+    object-fit: contain;
+    background-color: #ffffff;
+    border: 1px solid var(--text-color);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  .project__item:hover img {
+    transform: scale(1.03);
+  }
+  .project__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    border-radius: 10px;
+    width: 100%;
     text-align: center;
-    padding-top: 1.3rem;
-    padding-bottom: 1.3rem;
-}
-.footer__link{
-    color: #015f07;
-}
-/*Subtle hero animation*/
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-.header__title {
-    animation: fadeInUp 1s ease-out;
-}
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5; /* Make sure it's above .carousel__image (z-index: 1 or 2) */
+  }
+  .project__item:hover .project__overlay {
+    opacity: 1;
+  }
 
+/*--Multiple pictures--*/
+  .carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .carousel__image {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+  }
+  .carousel__image.active {
+    opacity: 1;
+    z-index: 2;
+  }
+  .carousel__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    background: #c1c1c15b;
+    border: none;
+    color: var(--background-color);
+    font-size: 2rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    /* Round button styles */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .carousel__btn.prev {
+    left: 10px;
+  }
+  .carousel__btn.next {
+    right: 10px;
+  }
+  .project__item:hover .carousel__btn {
+    opacity: 1;
+  }
+
+/*----------------------------------Screens----------------------------------*/
 /*
  * ========================
  * Small Screen -- 576px
@@ -437,12 +479,14 @@ body {
     .nav__hamburger-btn{
         display: none;
     }
-
-    /* Works */
-    .work{
-        width: 50%;
-    }
 }
+
+@media (max-width: 576px) {
+    .projects__grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on phones */
+      padding: 0 1rem;  /* Optional: small side padding */
+    }
+  }
 
 /*
  * ========================
@@ -481,9 +525,6 @@ body {
     }
     .section__title{
         font-size: 8rem;
-    }
-    .work{
-        width: 33.33333333333333%;
     }
     .contact__form{
         width: 40%;
@@ -536,22 +577,5 @@ body {
 @media only screen and (min-width: 87.5em) {
     .container {
         max-width: 1320px;
-    }
-}
-/* Responsive Design for smaller screens (phones) */
-@media (max-width: 768px) {
-    .skills__grid {
-        grid-template-columns: repeat(3, 1fr); /* Three boxes per row */
-        gap: 1rem; /* Adjust the spacing between items */
-        margin: 2em;
-    }
-
-    .skill__box {
-        width: 120px; /* Smaller size for skill boxes */
-        height: 120px;
-    }
-
-    .skill__box .work__title {
-        font-size: 0.9rem; /* Slightly smaller text size */
     }
 }
