@@ -85,7 +85,7 @@ window.addEventListener('scroll', () => {
 
   if (closestSection) {
     const ID = closestSection.getAttribute('id');
-    const LINK = NAV_LINKS.find(link => link.getAttribute('href') === `#${ID}`);
+    const LINK = NAV_LINKS.find(link => link.getAttribute('href') === '#${ID');
 
     if (LINK && LINK !== currentActiveLink) {
       if (currentActiveLink) {
@@ -148,5 +148,44 @@ document.querySelectorAll('.carousel').forEach(carousel => {
   prevBtn?.addEventListener('click', () => {
     const prevIndex = (currentIndex - 1 + images.length) % images.length;
     updateCarousel(prevIndex);
+  });
+});
+
+//Flip projects
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.flip-card').forEach(card => {
+    const inner = card.querySelector('.flip-card__inner');
+    let flipBackTimeout;
+
+    card.querySelectorAll('img').forEach(img => {
+      img.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log("I got in");
+        if (inner.classList.contains('flipped')) {
+          inner.classList.remove('flipped');
+          console.log("Image clicked: flipping to front");
+        } else {
+          inner.classList.add('flipped');
+          console.log("Image clicked: flipping to back");
+        }
+        console.log("I am stuck here...");
+      });
+    });
+    console.log("I got out");
+
+    card.addEventListener('mouseleave', () => {
+      if (inner.classList.contains('flipped')) {
+        flipBackTimeout = setTimeout(() => {
+          console.log("Mouse left");
+          clearTimeout(flipBackTimeout);
+          inner.classList.remove('flipped');
+        }, 4000);
+      }
+    });
+
+    card.addEventListener('mouseenter', () => {
+      console.log("Mouse entered");
+      clearTimeout(flipBackTimeout);
+    });
   });
 });

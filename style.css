@@ -66,6 +66,7 @@ html {
 :root{
     --background-color: #000000;
     --text-color: #ffffff;
+    --text-color2: #0032c6;
 }
 body {
     color: var(--text-color);
@@ -103,7 +104,7 @@ body {
     left: 50%;
     width: 125%;
     transform: translateX(-50%);
-    border-bottom: 3px dashed #015f07;
+    border-bottom: 3px dashed var(--text-color2);
 }
 
 /*
@@ -125,7 +126,7 @@ body {
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 20px;
+    top: 5px;
     left: 20px;
     z-index: 1000;
     cursor: pointer;
@@ -154,7 +155,7 @@ body {
     left: 0;
     z-index: 999;
     backdrop-filter: blur(25px);
-}
+}   
 .nav__list {
     display: flex;
     flex-direction: column;
@@ -169,20 +170,20 @@ body {
 .nav__list-link {
     color: #7c7c7c;
     position: relative;
-    font-weight: 800;
+    font-weight: 600;
     text-decoration: none;
     outline: none;
-    font-size: 2rem;
+    font-size: 3rem;
 }
 .nav__list-link::before {
     content: '';
     display: block;
     width: 100%;
     height: 3px;
-    border-radius: 99rem;
-    background-color: #015f07;
+    border-radius: 100rem;
+    background-color: var(--text-color2);
     position: absolute;
-    bottom: -12px;
+    bottom: -4px;
     left: 0;
     transform-origin: center;
     transform: scaleX(0);
@@ -190,14 +191,14 @@ body {
 }
 .nav__list-link:focus,
 .nav__list-link:hover {
-    color: #015f07;
+    color: var(--text-color2);
 }
 .nav__list-link:focus::before,
 .nav__list-link:hover::before {
     transform: scaleX(1);
 }
 .nav__list-link.active {
-    color: #015f07;
+    color: var(--text-color2);
 }
 .nav__list-link.active::before {
     transform: scaleX(1);
@@ -222,7 +223,7 @@ body {
     display: block;
     width: 95%;
     height: 3px;
-    border-radius: 99rem;
+    border-radius: 100rem;
     background-color: var(--text-color);
     position: absolute;
     left: 50%;
@@ -253,16 +254,7 @@ body {
     align-items: center;
     position: relative;
 }
-.header__bg{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 350px;
-    background: var(--background-color);
-    z-index: -1;
-}
-.header__left{
+.header{
     width: 100%;
     max-width: 900px;
 }
@@ -289,39 +281,59 @@ body {
     display: inline-flex;
     border-radius: 10px;
     text-decoration: none;
-    background-color: #015f07;
+    background-color: var(--text-color2);
     padding: 1.5rem 1.5rem;
     font-weight: 500;
-    color: white;
+    color: #ffffff;
     margin-top: 2rem;
     position: relative;
 }
+.header__image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    z-index: -1; /* Put it behind the text */
+  }
+  .header__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+
+  /* Gradient mask */
+    mask-image: linear-gradient(to bottom, var(--background-color) 70%, transparent 100%);
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+  }
 
 /*
  * ==================
- * Services
+ * About me
  * ==================
  */
- .service-cards{
+ .about-me{
     display: flex;
     flex-direction: column;
     margin-top: 6rem;
 }
-.service-card__box{
+.about-card__box{
     margin-bottom: 10rem;
-    border: 2px solid #015f07;
+    border: 2px solid var(--text-color2);
     padding: 3rem;
     border-radius: 15px;
     position: relative;
     overflow: hidden;
 }
-.service-card__title{
+.about-card__title{
     font-weight: 800;
     font-size: 2rem;
-    color: #015f07;
+    color: var(--text-color2);
     margin-top: 2rem;
 }
-.service-card__msg{
+.about-card__msg{
     font-weight: 400;
     font-size: 1.4rem;
     line-height: 1.6;
@@ -354,7 +366,7 @@ body {
     height: 100%;
     object-fit: contain;
     background-color: #ffffff;
-    border: 1px solid var(--text-color);
+    border: 2px solid var(--text-color2);
     border-radius: 10px;
     transition: transform 0.3s ease;
   }
@@ -372,7 +384,7 @@ body {
     width: 100%;
     text-align: center;
     padding: 1rem;
-    font-weight: bold;
+    font-weight: 400;
     font-size: 1.5rem;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -433,6 +445,46 @@ body {
     opacity: 1;
   }
 
+/*Flip project*/
+  .flip-card {
+    perspective: 1000px;
+    width: 100%;
+    height: 100%;
+  }
+  .flip-card__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+  }
+  .flip-card__inner.flipped {
+    transform: rotateY(180deg);
+  }
+  .flip-card__front,
+  .flip-card__back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .flip-card__front {
+    z-index: 2;
+  }
+  .flip-card__back {
+    transform: rotateY(180deg);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    z-index: 1;
+  }
+  
 /*----------------------------------Screens----------------------------------*/
 /*
  * ========================
@@ -445,9 +497,8 @@ body {
     }
 
     /* Header */
-    .header__right{
-        display: block;
-        opacity: 0.3;
+    .header__image{
+        position: absolute;
     }
     .header__title{
         flex-direction: row;
@@ -474,7 +525,7 @@ body {
         font-size: 1.5rem;
     }
     .nav__list-link.active {
-        color: #015f07; 
+        color: var(--text-color2); 
     }     
     .nav__hamburger-btn{
         display: none;
@@ -496,17 +547,17 @@ body {
     .container {
         max-width: 760px;
     }
-    .service-cards{
+    .about-cards{
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
         width: 100%;
     }
-    .service-card__box{
+    .about-card__box{
         width: 28%;
         max-width: 400px;
     }
-    .service-card__illustration{
+    .about-card__illustration{
         width: 100%;
         max-width: 150px;
         height: 150px;
@@ -545,10 +596,8 @@ body {
  * ======================================
  */
 @media only screen and (min-width: 62.5em) {
-    .header__right{
-        width: 500px;
-        opacity: 1;
-        top: 35px;
+    .header__image{
+        position: absolute;
     }
 }
 

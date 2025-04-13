@@ -12,7 +12,7 @@
 
     <!-- CSS & JS -->
     <link rel="stylesheet" href="./style.css"/>
-    <script src="./index.js" defer></script>
+    <script src="index.js" defer></script>
 
     <!-- Meta Tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,7 +57,7 @@
             </div>
         </nav>
         <section class="header__container container">
-            <div class="header__left">
+            <div class="header">
                 <span class="header__sup-text">Hello World! I am</span>
                     <h1 class="header__title">
                         <span class="header__title-1" >Ion</span>
@@ -67,15 +67,17 @@
                     <a href="CV_Ion_Paschalidis_en.pdf" class="header__resume" target="_blank">Resume</a>
             </div>
         </section>
-        <span class="header__bg"></span>
+        <div class="header__image">
+            <img src="Icons/background.svg" alt="Header image"/>
+        </div>
     </header>
 
     <!-- About -->
     <section id="aboutMe" class="section container">
         <h2 class="section__title">About Me</h2>
-        <div class="service-cards">
-            <article class="service-card__box">
-                <p class="service-card__msg"> 
+        <div class="about-me">
+            <article class="about__box">
+                <p class="about__msg"> 
                     My name is Ion Paschalidis, and after graduating from the Ecole Nationale d'Ingénieurs de Brest (ENIB), 
                     a French engineering school, where I studied for a diploma in systems engineering. I decided to continue my 
                     studies, so I enrolled in the MSc of Naval Architecture offered by the KTH Royal Institute of Technology, more 
@@ -95,33 +97,48 @@
     <section id="projects" class="section container">
         <h2 class="section__title">Projects</h2>
         <div class="projects__grid">
-            <a class="project__item">
+          
+          <!-- Project 1 -->
+          <div class="project__item flip-card">
+            <div class="flip-card__inner">
+              <div class="flip-card__front">
                 <div class="carousel">
-                    <img src="Icons/Scortex_logo.png" alt="Image 1" class="carousel__image active">
-                    <img src="Icons/Scortex_spark.png" alt="Image 2" class="carousel__image">
-                    
+                  <img src="Icons/Scortex_logo.png" alt="Image 1" class="carousel__image active">
+                  <img src="Icons/Scortex_spark.png" alt="Image 2" class="carousel__image">
                     <button class="carousel__btn prev">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
                     </button>
                     <button class="carousel__btn next">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
-                    </button>
-                </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+                    </div>
                 <div class="project__overlay">Field Application Engineer Intern</div>
-            </a>  
-            <a class="project__item">
-                <img src="Icons/SEMTEC_travaux.png">
-                <div class="project__overlay">Freelance Engineering Project</div>
-            </a>
-            <a class="project__item">
-                <img src="Icons/Ifremer.png">
-                <div class="project__overlay">Assistant Mechanical and Robotics Engineer Intern</div>
-            </a>  
-            <a class="project__item">
-                <img src="Icons/kosmos_fish.png">
-                <div class="project__overlay">Kosmos Project</div>
-            </a>    
+              </div>
+              <div class="flip-card__back">
+                <p>Internship description goes here.</p>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Project 2 -->
+          <div class="project__item">
+            <img src="Icons/SEMTEC_travaux.png" alt="SEMTEC Project">
+            <div class="project__overlay">Freelance Engineering Project</div>
+          </div>
+      
+          <!-- Project 3 -->
+          <div class="project__item">
+            <img src="Icons/Ifremer.svg" alt="Ifremer Project">
+            <div class="project__overlay">Assistant Mechanical and Robotics Engineer Intern</div>
+          </div>
+      
+          <!-- Project 4  -->
+          <div class="project__item">
+            <img src="Icons/kosmos_fish.png" alt="Kosmos Project">
+            <div class="project__overlay">Kosmos Project</div>
+          </div>
+      
         </div>
-    </section>
+      </section>
+      
 </body>
 </html>
