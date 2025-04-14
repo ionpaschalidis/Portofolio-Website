@@ -3,7 +3,7 @@ const NAV_LIST = document.getElementById('navList');
 const HERO_HEADER = document.getElementById('home');
 const HAMBURGER_BTN = document.getElementById('hamburgerBtn');
 const NAV_LINKS = Array.from( document.querySelectorAll('.nav__list-link'));
-const SERVICE_BOXES = document.querySelectorAll('.service-card__box');
+const SERVICE_BOXES = document.querySelectorAll('.about-card__box');
 const ACTIVE_LINK_CLASS = 'active';
 const BREAKPOINT = 576;
 
@@ -160,26 +160,26 @@ document.addEventListener("DOMContentLoaded", () => {
     card.querySelectorAll('img').forEach(img => {
       img.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log("I got in");
         if (inner.classList.contains('flipped')) {
           inner.classList.remove('flipped');
-          console.log("Image clicked: flipping to front");
         } else {
           inner.classList.add('flipped');
-          console.log("Image clicked: flipping to back");
         }
-        console.log("I am stuck here...");
       });
     });
-    console.log("I got out");
 
+    const backSide = card.querySelector('.flip-card__back');
+    backSide.addEventListener('click', () => {
+      inner.classList.remove('flipped');
+    });
+    
     card.addEventListener('mouseleave', () => {
       if (inner.classList.contains('flipped')) {
         flipBackTimeout = setTimeout(() => {
           console.log("Mouse left");
           clearTimeout(flipBackTimeout);
           inner.classList.remove('flipped');
-        }, 4000);
+        }, 6000);
       }
     });
 

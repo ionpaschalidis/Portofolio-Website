@@ -67,6 +67,7 @@ html {
     --background-color: #000000;
     --text-color: #ffffff;
     --text-color2: #0032c6;
+    --gap: 20px;
 }
 body {
     color: var(--text-color);
@@ -170,10 +171,10 @@ body {
 .nav__list-link {
     color: #7c7c7c;
     position: relative;
+    font-size: 1.7rem !important;
     font-weight: 600;
     text-decoration: none;
     outline: none;
-    font-size: 3rem;
 }
 .nav__list-link::before {
     content: '';
@@ -319,7 +320,7 @@ body {
     flex-direction: column;
     margin-top: 6rem;
 }
-.about-card__box{
+.about__box{
     margin-bottom: 10rem;
     border: 2px solid var(--text-color2);
     padding: 3rem;
@@ -327,13 +328,13 @@ body {
     position: relative;
     overflow: hidden;
 }
-.about-card__title{
+.about__title{ /*to add other subsections*/
     font-weight: 800;
     font-size: 2rem;
-    color: var(--text-color2);
+    color: var(--text-color);
     margin-top: 2rem;
 }
-.about-card__msg{
+.about__msg{
     font-weight: 400;
     font-size: 1.4rem;
     line-height: 1.6;
@@ -483,8 +484,128 @@ body {
     padding: 2rem;
     text-align: center;
     z-index: 1;
+    cursor: pointer;
+    border: 2px solid var(--text-color2);
   }
-  
+
+/*
+ * ==================
+ * Timeline
+ * ==================
+ */
+ .timeline{
+    position: relative;
+    max-width: 1080px;
+    margin: 100px auto;
+}
+.timeline::after{
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 100%;
+    background-color: var(--text-color2);
+    top: 0;
+    margin-left: -20px;
+    z-index: -1;
+}
+
+/*
+ * ==================
+ * Education
+ * ==================
+ */
+ .education{
+    display: flex;
+    flex-direction: column;
+    margin-top: 6rem;
+}
+.education__box{
+    margin-bottom: 3rem;
+    border: 2px solid var(--text-color2);
+    padding: 3rem;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+.education__title{ /*subsections*/
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-top: 0rem;
+}
+.education__msg{
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.6;
+}
+
+/*
+ * ==================
+ * Contact
+ * ==================
+ */
+.contact{
+    display: flex;
+    width: 100%;
+    margin-top: 10rem;
+    justify-content: center;
+    padding-bottom: 5rem;
+}
+.contact__link {
+    display: block;
+    text-decoration: none; 
+    position: relative;
+    color: var(--background-color); 
+}
+.contact__box {
+    border-radius: 7px;
+    padding: 4rem;
+    background-color: var(--text-color);
+    width: 100%;
+    max-width: 500px;
+    text-align: center; 
+}   
+.contact-box .contact-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    color: var(--background-color);
+    text-align: center;
+}
+.contact-box .contact-icons {
+    display: flex;
+    justify-content: center; /* Center icons */
+    gap: 20px; /* Add space between icons */
+    margin-top: 1rem;
+}
+.contact-card{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20rem;
+}
+.contact-box .contact-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px; /* Size of the circle */
+    height: 60px; /* Height of the circle */
+    border-radius: 50%; /* Makes it circular */
+    border: 2px solid var(--text-color2); 
+    overflow: hidden; /* Ensures image doesn't spill outside */
+    text-decoration: none;
+    background-color: #ffffff;
+}
+.contact-box .contact-icon img {
+    width: 100%; /* Ensures the image fills the circle's width */
+    height: 100%; /* Ensures the image fills the circle's height */
+    object-fit: cover; /* Ensures the image is cropped to cover the circle */
+    transition: transform 0.3s ease; /* Smooth zoom effect on hover */
+}
+.contact-box .contact-icon:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.9);  
+}
+
 /*----------------------------------Screens----------------------------------*/
 /*
  * ========================
