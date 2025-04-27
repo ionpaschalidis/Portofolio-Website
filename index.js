@@ -68,7 +68,7 @@ window.addEventListener('resize', ()=>{
 
 // As the user scrolls, the active link should change based on the section currently displayed on the screen.
 window.addEventListener('scroll', () => {
-  const sections = document.querySelectorAll('#home, #aboutMe, #education, #projects, #contact');
+  const sections = document.querySelectorAll('#home, #aboutMe, #experience, #education, #projects, #contact');
   const NAV_BAR_HEIGHT = NAV_BAR.getBoundingClientRect().height;
   let closestSection = null;
   let minDistance = Number.POSITIVE_INFINITY;
@@ -186,6 +186,23 @@ document.addEventListener("DOMContentLoaded", () => {
     card.addEventListener('mouseenter', () => {
       console.log("Mouse entered");
       clearTimeout(flipBackTimeout);
+    });
+  });
+});
+
+//Make popup disappear
+document.addEventListener("DOMContentLoaded", function() {
+  const projectItems = document.querySelectorAll('.project__item');
+  projectItems.forEach(item => {
+    const popupText = item.querySelector('.popuptext');
+    item.addEventListener('mouseenter', () => {
+      popupText.classList.add('show');
+      setTimeout(() => {
+        popupText.classList.remove('show');
+      }, 1500); //1500ms
+    });
+    item.addEventListener('mouseleave', () => {
+      popupText.classList.remove('show');
     });
   });
 });
