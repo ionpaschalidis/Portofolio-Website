@@ -159,6 +159,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     card.querySelectorAll('img').forEach(img => {
       img.addEventListener('click', (e) => {
+        //if the image is inside a .link-icon, do nothing
+        if (img.closest('.link-icon')) {
+          return; 
+        }
         e.preventDefault();
         if (inner.classList.contains('flipped')) {
           inner.classList.remove('flipped');
@@ -167,6 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
+    
 
     const backSide = card.querySelector('.flip-card__back');
     backSide.addEventListener('click', () => {

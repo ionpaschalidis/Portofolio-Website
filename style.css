@@ -64,9 +64,11 @@ height: 100%;
 scroll-behavior: smooth;
 }
 :root{
---background-color: #000000;
+--background-color: #141414;
+--container-color: #262626;
 --text-color: #ffffff;
 --text-color2: #0032c6;
+--text-color3: #999999;
 --gap: 20px;
 }
 body {
@@ -98,15 +100,6 @@ font-weight: 600;
 font-size: 4rem;
 position: relative;
 }
-.section__title::before{
-content: '';
-position: absolute;
-bottom: -5px;
-left: 50%;
-width: 125%;
-transform: translateX(-50%);
-border-bottom: 3px dashed var(--text-color2);
-}
 
 /*
 * ==================
@@ -114,7 +107,8 @@ border-bottom: 3px dashed var(--text-color2);
 * ==================
 */
 .lightmode {
---background-color: #ffffff;    
+--background-color: #fdf5e2; 
+--container-color: #fdf1cb;   
 --text-color: #000000;
 }
 #theme-switch{
@@ -122,7 +116,7 @@ height: 50px;
 width: 50px;
 padding: 0;
 border-radius: 50%;
-background-color: #000000;  
+background-color: var(--container-color);  
 display: flex;
 justify-content: center;
 align-items: center;
@@ -168,7 +162,7 @@ overflow-y: scroll;
 text-align: center;
 }
 .nav__list-link {
-color: #7c7c7c;
+color: var(--text-color3);
 position: relative;
 font-size: 1.7rem !important;
 font-weight: 600;
@@ -283,9 +277,10 @@ display: inline-flex;
 border-radius: 10px;
 text-decoration: none;
 background-color: var(--text-color2);
-padding: 1.5rem 1.5rem;
-font-weight: 500;
-color: #ffffff;
+padding: 1.2rem 1.2rem;
+font-weight: 600;
+font-size: 1.8rem;
+color: var(--background-color);
 margin-top: 2rem;
 position: relative;
 }
@@ -322,7 +317,7 @@ margin-top: 6rem;
 }
 .about__box{
 margin-bottom: 10rem;
-border: 2px solid var(--text-color2);
+background-color: var(--container-color);
 padding: 3rem;
 border-radius: 15px;
 position: relative;
@@ -381,86 +376,86 @@ text-align: justify;
 * Education
 * ==================
 */
- /* Container around content */
- .education__container {
-    padding: 10px 40px;
-    position: relative;
-    background-color: var(--background-color);
-    width: 50%;
-    margin-top: 60px;
-    
-  }
-  /* The circles on the timeline */
-  .education__container::after {
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    right: -13px;
-    background-color: var(--background-color);
-    border: 4px solid var(--text-color2);
-    top: 16px;
-    border-radius: 50%;
-    z-index: 1;
-  }
-  /* Place the container to the left */
-  .left {
-    left: 0%;
-  }
-  /* Place the container to the right */
-  .right {
-    left: 50%;
-  }
-  /* Add arrows to the left container (pointing right) */
-  .left::before {
-    content: " ";
-    height: 0;
-    position: absolute;
-    top: 20px;
-    width: 0;
-    z-index: 1;
-    right: 30px;
-    border: medium solid var(--text-color);
-    border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent var(--text-color);
-  }
-  /* Add arrows to the right container (pointing left) */
-  .right::before {
-    content: " ";
-    height: 0;
-    position: absolute;
-    top: 20px;
-    width: 0;
-    z-index: 1;
-    left: 30px;
-    border: medium solid var(--text-color);
-    border-width: 10px 10px 10px 0;
-    border-color: transparent var(--text-color) transparent transparent;
-  }
-  /* Fix the circle for containers on the right side */
-  .right::after {
-    left: -13px;
-  }
+/* Container around content */
+.education__container {
+padding: 10px 40px;
+position: relative;
+background-color: var(--background-color);
+width: 50%;
+margin-top: 60px;
+
+}
+/* The circles on the timeline */
+.education__container::after {
+content: '';
+position: absolute;
+width: 25px;
+height: 25px;
+right: -13px;
+background-color: var(--background-color);
+border: 4px solid var(--text-color2);
+top: 16px;
+border-radius: 50%;
+z-index: 1;
+}
+/* Place the container to the left */
+.left {
+left: 0%;
+}
+/* Place the container to the right */
+.right {
+left: 50%;
+}
+/* Add arrows to the left container (pointing right) */
+.left::before {
+content: " ";
+height: 0;
+position: absolute;
+top: 20px;
+width: 0;
+z-index: 1;
+right: 30px;
+border: medium solid var(--container-color);
+border-width: 10px 0 10px 10px;
+border-color: transparent transparent transparent var(--container-color);
+}
+/* Add arrows to the right container (pointing left) */
+.right::before {
+content: " ";
+height: 0;
+position: absolute;
+top: 20px;
+width: 0;
+z-index: 1;
+left: 30px;
+border: medium solid var(--container-color);
+border-width: 10px 10px 10px 0;
+border-color: transparent var(--container-color) transparent transparent;
+}
+/* Fix the circle for containers on the right side */
+.right::after {
+left: -13px;
+}
 /* The actual content */
 .education__content {
 padding: 20px 30px;
-background-color: var(--text-color);
+background-color: var(--container-color);
 position: relative;
 border-radius: 6px;
 }
 .education__title{
-color: var(--background-color);
+color: var(--text-color);
 font-size: 2rem;
 font-weight: 700;
 }
 .education__subtitle{
-color: var(--background-color);
+color: var(--text-color);
 }
 .education__dates{
-color: #7c7c7c;
+color: var(--text-color3);
 }
 .education__msg{
-color: var(--background-color);
+color: var(--text-color);
 }
 
 /*
@@ -489,8 +484,7 @@ cursor: pointer;
 width: 100%;
 height: 100%;
 object-fit: contain;
-background-color: #ffffff;
-border: 2px solid var(--text-color2);
+background-color: var(--container-color);
 border-radius: 10px;
 transition: transform 0.3s ease;
 }
@@ -507,9 +501,9 @@ border: 1px solid var(--text-color);
 border-radius: 10px;
 width: 100%;
 text-align: center;
-padding: 1rem;
+padding: 0.2rem;
 font-weight: 400;
-font-size: 1.5rem;
+font-size: 1.4rem;
 opacity: 0;
 transition: opacity 0.3s ease;
 z-index: 3; 
@@ -543,7 +537,7 @@ position: absolute;
 top: 50%;
 transform: translateY(-50%);
 z-index: 3;
-background: #c1c1c15b;
+background: var(--text-color3);
 border: none;
 color: var(--background-color);
 font-size: 2rem;
@@ -597,7 +591,7 @@ z-index: 2;
 }
 .flip-card__back {
 transform: rotateY(180deg);
-background-color: var(--background-color);
+background-color: var(--container-color);
 color: var(--text-color);
 display: flex;
 align-items: center;
@@ -606,7 +600,28 @@ padding: 2rem;
 text-align: center;
 z-index: 1;
 cursor: pointer;
-border: 2px solid var(--text-color2);
+}
+.link-icon {
+position: absolute;
+bottom: 5%;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 35px; 
+height: 35px; 
+border-radius: 50%;
+overflow: hidden; 
+text-decoration: none;
+background-color: var(--container-color);
+}
+.link-icon img {
+width: 80%; 
+height: 80%; 
+border: none;
+object-fit: cover; 
+}
+.link-icon:hover img {
+transform: scale(1.1);
 }
 
 /*
@@ -623,8 +638,8 @@ z-index: 3;
 .popuptext {
 visibility: hidden;
 width: 160px;
-background-color: #999999;
-color: #ffffff;
+background-color: var(--text-color3);
+color: var(--text-color);
 text-align: center;
 border-radius: 6px;
 padding: 4px 0;
@@ -639,7 +654,7 @@ visibility: visible;
 transition: opacity 0.8s;
 opacity: 1;
 }
-    
+
 /*
 * ==================
 * Contact
@@ -648,7 +663,7 @@ opacity: 1;
 .contact{
 display: flex;
 width: 100%;
-margin-top: 10rem;
+margin-top: 1rem;
 justify-content: center;
 padding-bottom: 5rem;
 }
@@ -661,7 +676,7 @@ color: var(--background-color);
 .contact__box {
 border-radius: 7px;
 padding: 2rem;
-background-color: var(--text-color);
+background-color: var(--container-color);
 width: 100%;
 max-width: 500px;
 text-align: center; 
@@ -670,7 +685,7 @@ text-align: center;
 font-size: 2rem;
 font-weight: 700;
 margin-top: 1rem;
-color: var(--background-color);
+color: var(--text-color);
 text-align: center;
 }
 .contact-box .contact-icons {
@@ -688,23 +703,21 @@ margin-top: 20rem;
 display: flex;
 justify-content: center;
 align-items: center;
-width: 60px; /* Size of the circle */
-height: 60px; /* Height of the circle */
-border-radius: 50%; /* Makes it circular */
-border: 2px solid var(--text-color2); 
-overflow: hidden; /* Ensures image doesn't spill outside */
+width: 60px; 
+height: 60px; 
+border-radius: 50%; 
+border: 2px solid var(--background-color); 
+overflow: hidden; 
 text-decoration: none;
-background-color: #ffffff;
+background-color: var(--container-color);
 }
 .contact-box .contact-icon img {
-width: 100%; /* Ensures the image fills the circle's width */
-height: 100%; /* Ensures the image fills the circle's height */
-object-fit: cover; /* Ensures the image is cropped to cover the circle */
-transition: transform 0.3s ease; /* Smooth zoom effect on hover */
+width: 90%; 
+height: 90%; 
+object-fit: cover; 
 }
 .contact-box .contact-icon:hover img {
 transform: scale(1.1);
-filter: brightness(0.9);  
 }
 
 /*----------------------------------Screens----------------------------------*/
@@ -762,9 +775,9 @@ filter: brightness(0.9);
 @media only screen and (max-width: 768px) {
 /* Project */
 .project__title {
-padding: 0.5rem;
+padding: 0.4rem;
 font-weight: 300;
-font-size: 1rem;
+font-size: 0.9rem;
 }
 
 /*Popup*/
