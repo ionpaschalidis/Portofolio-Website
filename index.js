@@ -25,7 +25,6 @@ const disableLightMode = () => {
 };
 
 if (lightmode === "active") enableLightMode()
-
 themeSwitch.addEventListener("click", () => {
     lightmode = localStorage.getItem('lightmode'); // update value
     lightmode !== "active" ? enableLightMode() : disableLightMode();
@@ -85,7 +84,7 @@ window.addEventListener('scroll', () => {
 
   if (closestSection) {
     const ID = closestSection.getAttribute('id');
-    const LINK = NAV_LINKS.find(link => link.getAttribute('href') === '#${ID');
+    const LINK = NAV_LINKS.find(link => link.getAttribute('href') === `#${ID}`);
 
     if (LINK && LINK !== currentActiveLink) {
       if (currentActiveLink) {
@@ -97,6 +96,13 @@ window.addEventListener('scroll', () => {
   }
 });
 
+// When navbar link is clicked, reset the active state
+NAV_LINKS.forEach(link => {
+  link.addEventListener('click', ()=>{
+    resetActiveState();
+    link.blur();
+  })
+})
 
 // Shows & hide navbar on smaller screen
 HAMBURGER_BTN.addEventListener('click', ()=>{
@@ -117,14 +123,6 @@ HAMBURGER_BTN.addEventListener('click', ()=>{
     overflowY: null
   });
 });
-
-// When navbar link is clicked, reset the active state
-NAV_LINKS.forEach(link => {
-  link.addEventListener('click', ()=>{
-    resetActiveState();
-    link.blur();
-  })
-})
 
 // Multiple pictures per project
 document.querySelectorAll('.carousel').forEach(carousel => {
@@ -184,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
           console.log("Mouse left");
           clearTimeout(flipBackTimeout);
           inner.classList.remove('flipped');
-        }, 6000);
+        }, 4000);
       }
     });
 
@@ -210,4 +208,46 @@ document.addEventListener("DOMContentLoaded", function() {
       popupText.classList.remove('show');
     });
   });
+});
+
+//Extra information
+function extraInfo(school) {
+  const space = document.getElementById("space-" + school);
+  const moreText = document.getElementById("more-info-" + school);
+  const icon = document.getElementById("icon-" + school).querySelector("path");
+
+  const upPath = "M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z";
+  const downPath = "M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z";
+
+  const isHidden = moreText.style.display === "none" || moreText.style.display === "";
+
+  space.style.display = isHidden ? "inline" : "none";
+  moreText.style.display = isHidden ? "inline" : "none";
+  icon.setAttribute("d", isHidden ? downPath : upPath);
+}
+
+// Setup auto-hide for all "more-info" containers
+document.addEventListener("DOMContentLoaded", () => {
+  const upPath = "M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z";
+  const downPath = "M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z";
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        const moreInfo = entry.target;
+        const id = moreInfo.id.replace("more-info-", "");
+        const space = document.getElementById("space-" + id);
+        const icon = document.getElementById("icon-" + id).querySelector("path");
+
+        moreInfo.style.display = "none";
+        space.style.display = "none";
+        icon.setAttribute("d", downPath); // reset icon
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  // Observe all "more-info" elements
+  document.querySelectorAll("[id^='more-info-']").forEach(el => observer.observe(el));
 });
