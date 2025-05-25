@@ -638,10 +638,11 @@ padding: 2rem;
 text-align: center;
 z-index: 1;
 cursor: pointer;
+font-size: 1.5rem;
 }
 .link-icon {
 position: absolute;
-bottom: 5%;
+bottom: 0.5rem;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -661,7 +662,6 @@ justify-content: center;
 .link-icon:hover img {
 transform: scale(1.1);
 }
-
 
 /*
 * ==================
@@ -802,9 +802,6 @@ display: none;
 #theme-switch{
 top: 3rem;
 }
-.flip-card__back {
-font-size: 0.8rem !important;
-}
 }
 
 /*
@@ -890,7 +887,7 @@ left: 0%;
 }
 /*Flip card text*/
 .flip-card__back {
-font-size: 1rem;
+font-size: 1.5vh;
 }
 }
 
