@@ -50,7 +50,7 @@ border-spacing: 0;
 /*
 * ==================
 * Start Here
-* ==================
+* ================== 
 */
 *,*::before,*::after{
 padding: 0;
@@ -121,7 +121,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 position: fixed;
-top: 2rem;
+top: 1.5rem;
 left: 20px;
 z-index: 1000;
 cursor: pointer;
@@ -149,7 +149,7 @@ width: 100%;
 top: 0;
 left: 0;
 z-index: 999;
-backdrop-filter: blur(25px);
+backdrop-filter: blur(20px);
 }   
 .nav__list {
 display: flex;
@@ -211,6 +211,7 @@ border-radius: 4px;
 cursor: pointer;
 margin-left: auto;
 overflow: hidden;
+right: 2rem;
 }
 .nav__hamburger-top,
 .nav__hamburger-center,
@@ -221,7 +222,7 @@ height: 3px;
 border-radius: 10px;
 background-color: var(--text-color);
 position: absolute;
-left: 50%;
+left:50%;
 transform: translate(-50%, -50%);
 }
 .nav__hamburger-top{
@@ -797,6 +798,12 @@ color: var(--text-color2);
 }     
 .nav__hamburger-btn{
 display: none;
+}
+#theme-switch{
+top: 3rem;
+}
+.flip-card__back {
+font-size: 0.8rem !important;
 }
 }
 
